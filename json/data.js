@@ -1,0 +1,51 @@
+export const DATA = [
+  {
+    id: 1000,
+    uri: '../assets/burger.jpg',
+    title: 'Burger',
+    ingridients: ['lectuce', 'garlic sauce', 'baccon', 'tomato', 'beef'],
+    price: '10',
+    category: 'main',
+  },
+  {
+    id: 1001,
+    uri: '../assets/burger.jpg',
+    title: 'Steak',
+    ingridients: ['lectuce', 'garlic sauce', 'baccon', 'tomato', 'beef'],
+    price: '10',
+    category: 'main',
+  },
+  {
+    id: 1002,
+
+    uri: '../assets/burger.jpg',
+    title: 'Pho',
+    ingridients: ['lectuce', 'garlic sauce', 'baccon', 'tomato', 'beef'],
+    price: '10',
+    category: 'main',
+  },
+  {
+    id: 1003,
+    uri: '../assets/burger.jpg',
+    title: 'Ribs',
+    ingridients: ['lectuce', 'garlic sauce', 'baccon', 'tomato', 'beef'],
+    price: '10',
+    category: 'main',
+  },
+  {
+    id: 1004,
+    uri: '../assets/burger.jpg',
+    title: 'Sushi',
+    ingridients: ['lectuce', 'garlic sauce', 'baccon', 'tomato', 'beef'],
+    price: '10',
+    category: 'main',
+  },
+  {
+    id: 1005,
+    uri: '../assets/burger.jpg',
+    title: 'Ramen',
+    ingridients: ['lectuce', 'garlic sauce', 'baccon', 'tomato', 'beef'],
+    price: '10',
+    category: 'main',
+  },
+]
