@@ -6,7 +6,7 @@ import { globalStyles } from '../styles/global'
 export default function ItemMenu({ uri, title, ingridients, price, onPress }) {
   return (
     <TouchableOpacity onPress={onPress} style={styles.menuContainer}>
-      <Image style={styles.image} source={require('../assets/burger.jpg')} />
+      <Image style={styles.image} source={{uri: uri}} />
       <View style={styles.details}>
         <Text style={globalStyles.boldText}>{title}</Text>
         <Ingridients ingridients={ingridients} />

@@ -18,13 +18,7 @@ export default function DetailsBar() {
 
 const styles = StyleSheet.create({
   DetailsBarContainer: {
-    padding: 16,
-    shadowOffset: { width: 0, height: 0 },
-    shadowColor: 'black',
-    shadowOpacity: 1,
-    // background color must be set for Android
-    backgroundColor: '#0000', // invisible color
-    elevation: 1,
+    padding: 16
   },
   bill: {
     flexDirection: 'row',
