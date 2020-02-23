@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { View } from 'react-native'
 import { OptimizedFlatList } from 'react-native-optimized-flatlist' // render faster than FlatList
 import { globalStyles } from '../styles/global'
@@ -7,13 +7,18 @@ import { db } from '../firebase/firebaseConfig'
 import ItemMenu from '../components/ItemMenu'
 
 
-export default function Home({ navigation }) {
-  const [menu, setMenu] = useState([])
+export default class  Home extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      menu: []
+    }
+  }
 
-  useEffect( () => {
+  componentDidMount(){
     let docRef = db.collection("menu")
-    docRef.get().then(function(querySnapshot) {
-      const menuList = []
+    const menuList = []
+    docRef.get().then((querySnapshot) => { // Use Arrow function for binding, or this.setState() won't work
       querySnapshot.forEach(doc => {
         const {title, price, ingridients, uri} = doc.data()
         menuList.push({
@@ -24,17 +29,19 @@ export default function Home({ navigation }) {
           uri
         })
       })
-      setMenu(menuList)
+      this.setState({menu: menuList})
     });
-  })
+  }
   
 
-  return (
+  render (){
+    return(
     <View style={globalStyles.container}>
       <OptimizedFlatList
         showsVerticalScrollIndicator={false}
-        data={menu}
-        renderItem={({ item }) => (
+        data={this.state.menu}
+        renderItem={({ item }) =>{
+        return(
           <ItemMenu
             onPress={() => navigation.navigate('ItemDetails')}
             uri={item.uri}
@@ -42,9 +49,9 @@ export default function Home({ navigation }) {
             ingridients={item.ingridients}
             price={item.price}
           />
-        )}
+        )}}
         keyExtractor={item => item.id.toString()}
       />
-    </View>
-  )
+    </View>)
+  }
 }
