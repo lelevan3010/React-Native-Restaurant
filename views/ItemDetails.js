@@ -1,16 +1,18 @@
 import React from 'react'
 import { View, Image, StyleSheet } from 'react-native'
-import { OptimizedFlatList } from 'react-native-optimized-flatlist'
 import { globalStyles } from '../styles/global'
-import ItemCart from '../components/ItemCart'
 import DetailsBar from '../components/DetailsBar'
-import { DATA } from '../json/data'
 
-export default function ItemDetails(props) {
+export default function ItemDetails({ navigation }) {
+  const imageUri = navigation.getParam('uri', '')
+  const title = navigation.getParam('title', '')
+  const ingridients = navigation.getParam('ingridients', '')
+  const price = navigation.getParam('price', '')
+
   return (
     <View style={{ ...globalStyles.container, justifyContent: 'flex-end' }}>
-      <Image style={styles.image} source={require('../assets/burger.jpg')} />
-      <DetailsBar />
+      <Image style={styles.image} source={{ uri: imageUri }} />
+      <DetailsBar title={title} ingridients={ingridients} price={price} />
     </View>
   )
 }

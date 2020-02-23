@@ -2,15 +2,16 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import Button from './Button'
 import { globalStyles } from '../styles/global'
+import { renderIngridients } from '../utils/renderIngridients'
 
-export default function DetailsBar() {
+export default function DetailsBar({ title, ingridients, price }) {
   return (
     <View style={styles.DetailsBarContainer}>
       <View style={styles.bill}>
-        <Text style={globalStyles.boldText}>Burger</Text>
-        <Text style={globalStyles.boldText}>€60</Text>
+        <Text style={globalStyles.boldText}>{title}</Text>
+        <Text style={globalStyles.boldText}>€{price}</Text>
       </View>
-      <Text style={styles.description}>chicken, beef, mushroom, garlic</Text>
+      <Text style={styles.description}>{renderIngridients(ingridients)}</Text>
       <Button text="ADD TO CART" />
     </View>
   )
@@ -18,7 +19,7 @@ export default function DetailsBar() {
 
 const styles = StyleSheet.create({
   DetailsBarContainer: {
-    padding: 16
+    padding: 16,
   },
   bill: {
     flexDirection: 'row',

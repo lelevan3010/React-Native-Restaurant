@@ -3,7 +3,8 @@ import { OptimizedFlatList } from 'react-native-optimized-flatlist' // acts like
 
 import ItemMenu from '../components/ItemMenu'
 
-const ListingMenu = ({ menuData }) => {
+const ListingMenu = ({ menuData, navigation }) => {
+  console.log(menuData)
   return (
     <OptimizedFlatList
       showsVerticalScrollIndicator={false}
@@ -11,7 +12,15 @@ const ListingMenu = ({ menuData }) => {
       renderItem={({ item }) => {
         return (
           <ItemMenu
-            onPress={() => navigation.navigate('ItemDetails')}
+            onPress={() =>
+              navigation.navigate('ItemDetails', {
+                id: item.id,
+                title: item.title,
+                uri: item.uri,
+                ingridients: item.ingridients,
+                price: item.price,
+              })
+            }
             uri={item.uri}
             title={item.title}
             ingridients={item.ingridients}
