@@ -4,7 +4,6 @@ import { OptimizedFlatList } from 'react-native-optimized-flatlist' // acts like
 import ItemMenu from '../components/ItemMenu'
 
 const ListingMenu = ({ menuData, navigation }) => {
-  console.log(menuData)
   return (
     <OptimizedFlatList
       showsVerticalScrollIndicator={false}

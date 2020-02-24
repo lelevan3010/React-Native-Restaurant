@@ -38,7 +38,7 @@ class Home extends React.Component {
   render() {
     const { isLoaded, menu } = this.state
     const { navigation } = this.props
-    console.log('home', menu)
+
     return (
       <View style={globalStyles.container}>
         <ListingMenuWithSpinner

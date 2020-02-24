@@ -1,24 +1,39 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import { globalStyles } from '../styles/global'
 import { Ionicons } from '@expo/vector-icons'
 import OrderCounter from '../components/OrderCounter'
 
-export default function ItemCart() {
+import { CartContext } from '../context/CartContext'
+
+export default function ItemCart({ title, uri, price, amount }) {
+  const { cartItems, setCartItems } = useContext(CartContext)
+
+  const deleteItem = () => {
+    const otherCartItems = cartItems.filter(item => item.title !== title)
+    setCartItems([...otherCartItems])
+  }
+
   return (
-    <TouchableOpacity style={styles.cartContainer}>
-      <Image style={styles.image} source={require('../assets/burger.jpg')} />
+    <View style={styles.cartContainer}>
+      <Image style={styles.image} source={{ uri: uri }} />
       <View style={styles.details}>
         <View style={styles.horizontal}>
           <View>
-            <Text style={globalStyles.boldText}>€100</Text>
-            <Text style={globalStyles.normalText}>Burger</Text>
+            <Text style={globalStyles.boldText}>€{price}</Text>
+            <Text style={globalStyles.normalText}>{title}</Text>
           </View>
-          <Ionicons name="md-close-circle" size={24} />
+          <TouchableOpacity>
+            <Ionicons
+              name="md-close-circle"
+              size={24}
+              onPress={() => deleteItem()}
+            />
+          </TouchableOpacity>
         </View>
-        <OrderCounter />
+        <OrderCounter amount={amount} title={title} />
       </View>
-    </TouchableOpacity>
+    </View>
   )
 }
 

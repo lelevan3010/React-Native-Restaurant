@@ -4,6 +4,7 @@ import { globalStyles } from '../styles/global'
 import DetailsBar from '../components/DetailsBar'
 
 export default function ItemDetails({ navigation }) {
+  const id = navigation.getParam('id', '')
   const imageUri = navigation.getParam('uri', '')
   const title = navigation.getParam('title', '')
   const ingridients = navigation.getParam('ingridients', '')
@@ -12,7 +13,13 @@ export default function ItemDetails({ navigation }) {
   return (
     <View style={{ ...globalStyles.container, justifyContent: 'flex-end' }}>
       <Image style={styles.image} source={{ uri: imageUri }} />
-      <DetailsBar title={title} ingridients={ingridients} price={price} />
+      <DetailsBar
+        id={id}
+        title={title}
+        ingridients={ingridients}
+        price={price}
+        uri={imageUri}
+      />
     </View>
   )
 }
