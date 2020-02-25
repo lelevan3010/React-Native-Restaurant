@@ -8,7 +8,7 @@ export const Provider = props => {
     cartItems,
     setCartItems,
   }
-  console.log('context', cartItems)
+
   return (
     <CartContext.Provider value={cartContext}>
       {props.children}

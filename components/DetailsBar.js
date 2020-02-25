@@ -58,7 +58,7 @@ export default function DetailsBar({ id, title, ingridients, price, uri }) {
       <Button
         text="ADD TO CART"
         onPress={() => {
-          // alert(`${title} is added to your cart!`)
+          alert(`${title} is added to your cart!`)
           setItemAndCheckName()
         }}
       />

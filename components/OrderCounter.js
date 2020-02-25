@@ -9,20 +9,25 @@ export default function OrderCounter({ amount, title }) {
   const { cartItems, setCartItems } = useContext(CartContext)
 
   const filteredCart = cartItems.filter(item => item.title === title)
+  const index = cartItems.indexOf(filteredCart)
+  let cloneCartItems = []
 
   const increaseAmount = () => {
     filteredCart[0].amount += 1
-    const otherCartItems = cartItems.filter(item => item.title !== title)
-    setCartItems([...otherCartItems, ...filteredCart])
+    cloneCartItems = [...cartItems]
+    cloneCartItems[index] = filteredCart
+    setCartItems([...cloneCartItems])
   }
 
   const decreaseAmount = () => {
     filteredCart[0].amount -= 1
-    const otherCartItems = cartItems.filter(item => item.title !== title)
+    cloneCartItems = [...cartItems]
     if (filteredCart[0].amount === 0) {
-      setCartItems([...otherCartItems])
+      cloneCartItems = cloneCartItems.filter(item => item.title !== title)
+      setCartItems([...cloneCartItems])
     } else {
-      setCartItems([...otherCartItems, ...filteredCart])
+      cloneCartItems[index] = filteredCart
+      setCartItems([...cloneCartItems])
     }
   }
 

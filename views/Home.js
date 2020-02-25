@@ -16,6 +16,7 @@ class Home extends React.Component {
     }
   }
 
+  // Use lyfe-cycle method to avoid side-effect of hooks
   componentDidMount() {
     let docRef = db.collection('menu')
     const menuList = []
