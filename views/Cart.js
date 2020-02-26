@@ -1,7 +1,7 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { View, Text, FlatList, SafeAreaView } from 'react-native'
-import { OptimizedFlatList } from 'react-native-optimized-flatlist'
 import { globalStyles } from '../styles/global'
+import HomeStack from '../routes/HomeStack'
 
 import ItemCart from '../components/ItemCart'
 import CheckoutBar from '../components/CheckoutBar'
@@ -10,7 +10,7 @@ import Button from '../components/Button'
 import { CartContext } from '../context/CartContext'
 
 export default function Cart({ navigation }) {
-  const { cartItems, setCartItems } = useContext(CartContext)
+  const { cartItems } = useContext(CartContext)
 
   if (cartItems.length > 0) {
     return (
@@ -44,7 +44,13 @@ export default function Cart({ navigation }) {
         }}
       >
         <Text style={{ marginBottom: 8 }}>Your cart is empty</Text>
-        <Button text="SHOP NOW" onPress={() => navigation.navigate('Home')} />
+        <Button
+          text="SHOP NOW"
+          onPress={() => {
+            if (HomeStack) navigation.popToTop('Home')
+            navigation.navigate('Home')
+          }}
+        />
       </View>
     )
   }

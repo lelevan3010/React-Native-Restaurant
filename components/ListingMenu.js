@@ -1,11 +1,14 @@
 import React from 'react'
-import { OptimizedFlatList } from 'react-native-optimized-flatlist' // acts like FlatList
-
+import { FlatList } from 'react-navigation'
 import ItemMenu from '../components/ItemMenu'
+import useScrollToTop from '../customHooks/useScrollToTop'
 
 const ListingMenu = ({ menuData, navigation }) => {
+  const listRef = useScrollToTop(navigation)
+
   return (
-    <OptimizedFlatList
+    <FlatList
+      ref={listRef}
       showsVerticalScrollIndicator={false}
       data={menuData}
       renderItem={({ item }) => {

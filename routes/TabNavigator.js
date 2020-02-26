@@ -47,6 +47,34 @@ export default createAppContainer(
         activeTintColor: '#04b33e',
         inactiveTintColor: '#333',
       },
+      // tabBarOnPress: (scene, jumpToIndex) => {
+      //   const { route, index, focused } = scene
+
+      //   if (route.index === 0) {
+      //     // Scroll to top
+      //     const navigationInRoute = route.routes[0]
+      //     if (
+      //       !!navigationInRoute &&
+      //       !!navigationInRoute.params &&
+      //       !!navigationInRoute.params.scrollToTop
+      //     ) {
+      //       navigationInRoute.params.scrollToTop()
+      //     }
+      //   }
+      //   jumpToIndex(1) // Exit
+      // },
+      tabBarOnPress: ({ navigation, defaultHandler }) => {
+        defaultHandler()
+
+        // When on a screen and pressing the tab again, try to scroll to the top
+        if (navigation.isFocused()) {
+          const scrollToTop = navigation.getParam('scrollToTop', null)
+
+          if (scrollToTop) {
+            scrollToTop()
+          }
+        }
+      },
     },
   ),
 )

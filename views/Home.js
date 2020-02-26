@@ -36,6 +36,19 @@ class Home extends React.Component {
     })
   }
 
+  // componentWillMount() {
+  //   this.props.navigation.setParams({
+  //     scrollToTop: this._scrollToTop,
+  //   })
+  // }
+
+  // // Scroll to top, using FlatList from react-navigation
+  // _scrollToTop = () => {
+  //   if (!!this.refComponent) {
+  //     this.refComponent.scrollToOffset({ offset: 0, animated: true })
+  //   }
+  // }
+
   render() {
     const { isLoaded, menu } = this.state
     const { navigation } = this.props
